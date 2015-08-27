@@ -1,0 +1,122 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16sp"
+    tools:context=".MainActivity">
+
+    <!--<TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16sp"
+        >
+-->
+    <TextView android:text="Race Timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textColor="#000033"
+        />
+
+    <Button
+        android:id="@+id/races"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="VIEW RACES"
+        android:background="#000033"
+        android:textColor="#ffffff"
+        android:shadowColor="#000000"
+        android:onClick="view_races"
+        />
+
+    <!--<Button
+        android:id="@+id/new_times"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="NEW RACE"
+        android:background="#000033"
+        android:textColor="#ffffff"
+        android:shadowColor="#000000"
+        android:onClick="new_times"
+        />
+        -->
+
+    <TableRow
+        android:id="@+id/tb_laps"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_vertical"
+        android:gravity="center_vertical|center">
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/tv_cp_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CP1: "
+            android:textSize="25sp"
+            />
+
+        <EditText
+            android:id="@+id/et_min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="2"
+            android:hint="mm"
+            android:textSize="25sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textSize="25sp"
+            />
+
+        <EditText
+            android:id="@+id/et_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="2"
+            android:hint="ss"
+            android:textSize="25sp"
+            />
+
+    </TableRow>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center|bottom">
+
+        <Button
+            android:id="@+id/start"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="CONTINUE"
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#fc4c02"
+            android:onClick="start"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

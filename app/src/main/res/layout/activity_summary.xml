@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Summary"
+            android:textSize="50sp"
+            android:textColor="#000033"
+            android:layout_toLeftOf="@+id/del"
+            android:singleLine="true"
+            />
+
+        <Button
+            android:id="@+id/del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="del"
+            android:background="#cc0000"
+            android:textColor="#ffffff"
+            android:onClick="delete"
+            />
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="SAVE AND RETURN"
+        android:textColor="#ffffff"
+        android:background="#000033"
+        android:onClick="save_and_return"
+        />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="MAP"
+        android:textColor="#ffffff"
+        android:background="#003300"
+        android:onClick="map"
+        />
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Race name: "
+            android:textColor="#000033"
+            android:textSize="25sp"
+            />
+
+        <EditText
+            android:id="@+id/race_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mitsubishi race"
+            android:textColor="#000033"
+            android:textSize="25sp"
+            />
+    </TableRow>
+
+    <ListView
+        android:id="@+id/list_summary"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        />
+
+
+
+</LinearLayout>

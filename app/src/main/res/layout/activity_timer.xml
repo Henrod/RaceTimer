@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:keepScreenOn="true">
+
+    <com.example.henrique.racetimer.Chronometer
+        android:id="@+id/chronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_gravity="center"
+        android:textColor="#000033"
+        android:singleLine="true"
+        />
+
+    <Chronometer
+        android:id="@+id/secondCheonometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/lap_time"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="50sp"
+            android:layout_gravity="center"
+            />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center|bottom">
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="START RACE"
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="#fc4c02"
+            android:onClick="manage_lap"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+        <Button
+            android:id="@+id/bt_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000033"
+            android:text="FINISH RACE"
+            android:textColor="#ffffff"
+            android:onClick="finish_race"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/lap_number"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="50sp"
+            android:layout_toRightOf="@+id/bt_finish"
+            android:layout_toEndOf="@+id/bt_finish"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:text="teste"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            />
+    </RelativeLayout>
+
+</LinearLayout>
