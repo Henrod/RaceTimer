@@ -6,12 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
-import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.PowerManager;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.View;
@@ -54,6 +50,9 @@ public class Timer extends Activity{
     Localizacao location;
     public static List<LatLng> cps;
 
+    private String st_lap_time;
+    private String st_lap_number;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,16 +69,23 @@ public class Timer extends Activity{
         next = (Button) findViewById(R.id.next);
 
         lap_time = (TextView) findViewById(R.id.lap_time);
-        lap_time.setText("CP1" + "-" + laps.get(0).getTime());
+        st_lap_time = "CP1" + "-" + laps.get(0).getTime();
+        lap_time.setText(st_lap_time);
         lap_number = (TextView) findViewById(R.id.lap_number);
-        lap_number.setText("Lap 1");
+        st_lap_number = "Lap 1";
+        lap_number.setText(st_lap_number);
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int screeWidth = size.x;
-        chronometer.setTextSize(TypedValue.COMPLEX_UNIT_PX, screeWidth/5);
+        chronometer.setTextSize(TypedValue.COMPLEX_UNIT_PX, screeWidth / 5);
         lap_time.setTextSize(TypedValue.COMPLEX_UNIT_PX, screeWidth / 6);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         new Thread() {
             @Override
@@ -111,14 +117,15 @@ public class Timer extends Activity{
                                             }
                                         }.start();
 
-                                        cps.add(new LatLng(
+                                        /*cps.add(new LatLng(
                                                 location.latitude, location.longitude
-                                        ));
+                                        ));*/
                                         if (current_lap + 1 < laps.size())
                                             current_lap++;
                                         else
                                             clicked = true;
-                                        lap_time.setText("CP" + (current_lap + 1) + "-" + laps.get(current_lap).getTime());
+                                        st_lap_time = "CP" + (current_lap + 1) + "-" + laps.get(current_lap).getTime();
+                                        lap_time.setText(st_lap_time);
                                     } else if (dif == 5 || dif == 4 || dif == 3 || dif == 2 || dif == 1)
                                         MediaPlayer.create(Timer.this, R.raw.bip).start();
                                 }
@@ -132,17 +139,17 @@ public class Timer extends Activity{
                                 }
                             });
                         }
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    if(current_lap == laps.size() - 1) {
-                                        ViewGroup.LayoutParams params = next.getLayoutParams();
-                                        params.height = ViewGroup.LayoutParams.FILL_PARENT;
-                                        next.setLayoutParams(params);
-                                        next.requestLayout();
-                                    }
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(current_lap == laps.size() - 1) {
+                                    ViewGroup.LayoutParams params = next.getLayoutParams();
+                                    params.height = ViewGroup.LayoutParams.FILL_PARENT;
+                                    next.setLayoutParams(params);
+                                    next.requestLayout();
                                 }
-                            });
+                            }
+                        });
                     }
                 }
             }
@@ -180,7 +187,8 @@ public class Timer extends Activity{
             chronometer.start();
             secondChronometer.start();
             start = false;
-            next.setText("NEXT LAP");
+            String st_next = "NEXT LAP";
+            next.setText(st_next);
             ViewGroup.LayoutParams params = next.getLayoutParams();
             params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
             next.setLayoutParams(params);
@@ -189,8 +197,10 @@ public class Timer extends Activity{
             chronometer.stop();
             secondChronometer.stop();
             current_lap = 0;
-            lap_time.setText("CP" + (current_lap + 1) + "-" + laps.get(current_lap).getTime());
-            lap_number.setText("Lap " + ++lap_number_int);
+            st_lap_time = "CP" + (current_lap + 1) + "-" + laps.get(current_lap).getTime();
+            lap_time.setText(st_lap_time);
+            st_lap_number = "Lap " + ++lap_number_int;
+            lap_number.setText(st_lap_number);
 
             Lap lap = new Lap();
             lap.setTime(getText(chronometer.getTimeElapsed()));
